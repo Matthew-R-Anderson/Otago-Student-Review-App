@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="OtagoReviewApp">
+    <head>
+        <title>Otago Student Review: View Tutors</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+        <script src="../js/angular.js"></script>
+        <script src="../js/angular-resource.js"></script>
+        <script src="../js/ngStorage.js"></script>
+        <script src="../js/otagoReviewApp.js"></script>
+    </head>
+
+    <body  ng-controller="StudentController as studCtrl">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="signedInIndex.html">Home</a></li>
+                    <li><a href="viewPapers.html">Papers</a></li>
+                    <li><a>Tutors</a></li>
+                    <li><a href="viewHalls.html">Halls</a></li>
+                    <li><a href="viewLibraries.html">Libraries</a></li>
+                    <li><a href="" ng-click="studCtrl.signOut()">Sign Out</a></li>
+                </ul>
+            </nav>
+            <!--<div ng-include="'menu.html'" ></div>-->
+        </header>
+        <div id="welcome">{{studCtrl.welcome}}</div>
+
+        <h1>Tutors</h1>
+
+        <main ng-controller="ReviewController as reviewCtrl">
+            <section class="boxes">
+
+                
+      
+                    <table ng-controller="TutorController as tutorCtrl">
+                        <thead>
+                            <tr>
+                                <th class="tutor-name">Tutor Name</th>
+                                <th class="description">Description</th>
+                                <th class="add-review">Reviews</th>
+                                <th class="add-review">Add a Review</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!--ng-repeat is kinda like a foreach loop. For each product in prodCtrl.products-->
+                            <tr ng-repeat="tutor in tutorCtrl.tutors">
+                                <td>{{tutor.name}}</td>
+                                <td>{{tutor.description}}</td>
+                                <td>{{tutor.reviews}}</td>
+                                <td><button type="button" ng-click="reviewCtrl.reviewRedirect(tutor)">Leave a Review</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
+        </main>
+
+        <footer class="boxes">
+            <p>To find a tutor for your paper <a href="https://inspirationeducation.co.nz/university-of-otago-tutors/">click here</a>
+            </p>
+        </footer>
+
+    </body>
+
+</html>

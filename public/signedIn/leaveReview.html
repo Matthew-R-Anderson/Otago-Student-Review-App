@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="OtagoReviewApp">
+    <head>
+        <title>Otago Student Review: Leave a Review</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+        <script src="../js/angular.js"></script>
+        <script src="../js/angular-resource.js"></script>
+        <script src="../js/ngStorage.js"></script>
+        <script src="../js/otagoReviewApp.js"></script>
+    </head>
+
+    <body >
+        <div>
+            <header ng-controller="StudentController as studCtrl">
+                <nav>
+                    <ul>
+                        <li><a href="signedInIndex.html">Home</a></li>
+                        <li><a href="viewPapers.html">Papers</a></li>
+                        <li><a href="viewTutors.html">Tutors</a></li>
+                        <li><a href="viewHalls.html">Halls</a></li>
+                        <li><a href="viewLibraries.html">Libraries</a></li>
+                        <li><a href="" ng-click="studCtrl.signOut()">Sign Out</a></li>
+                    </ul>
+                </nav>
+                <!--<div ng-include="'menu.html'" ></div>-->
+            </header>
+
+            <h1>Leave a review</h1>
+
+            <main ng-controller="ReviewController as reviewCtrl">
+                <section class="boxes">
+
+                    <h2>Write your review here:</h2>
+                    <form ng-submit="reviewCtrl.leaveReview(review)">
+                        <fieldset class="textInputs">
+                            <legend>Review</legend>
+                            <textarea cols="80" rows="4" id="comments" ng-model="review">Add your review here</textarea>
+                        </fieldset>
+                        <fieldset>
+                            <label><input type="reset" name="reset" value="Reset"></label>
+                            <label><input type="submit" name="submit" value="Submit Review"></label>
+                        </fieldset>
+                    </form>
+                </section>
+            </main>
+
+            <footer class="boxes">
+                <p>We want to hear from you</p>
+            </footer>
+
+    </body>
+
+</html>

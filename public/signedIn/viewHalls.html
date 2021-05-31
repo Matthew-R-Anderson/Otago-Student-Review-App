@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="OtagoReviewApp">
+    <head>
+        <title>Otago Student Review: View Halls</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+        <script src="../js/angular.js"></script>
+        <script src="../js/angular-resource.js"></script>
+        <script src="../js/ngStorage.js"></script>
+        <script src="../js/otagoReviewApp.js"></script>
+    </head>
+
+
+    <header ng-controller="StudentController as studCtrl">
+        <nav>
+            <ul>
+                <li><a href="signedInIndex.html">Home</a></li>
+                <li><a href="viewPapers.html">Papers</a></li>
+                <li><a href="viewTutors.html">Tutors</a></li>
+                <li><a>Halls</a></li>
+                <li><a href="viewLibraries.html">Libraries</a></li>
+                <li><a href="" ng-click="studCtrl.signOut()">Sign Out</a></li>
+
+            </ul>
+        </nav>
+        <div id="welcome" >{{studCtrl.welcome}}</div>
+        <!--<div ng-include="'menu.html'" ></div>-->
+    </header>
+
+    <body ng-controller="HallController as hallCtrl">
+        <h1>Halls</h1>
+
+        <main ng-controller="ReviewController as reviewCtrl">
+            <section class="boxes">
+
+
+                    <table >
+                        <thead>
+                            <tr>
+                                <th class="hall-name">Hall Name</th>
+                                <th class="hall-description">Description</th>
+                                <th class="add-review">Reviews</th>
+                                <th class="add-review">Add a Review</th>
+                            </tr>
+                        </thead>                            
+                        <tbody>
+                            <!--ng-repeat is kinda like a foreach loop. For each product in prodCtrl.products-->
+                            <tr ng-repeat="hall in hallCtrl.hall">
+                                <td>{{hall.title}}</td>
+                                <td>{{hall.description}}</td>
+                                <td>{{hall.reviews}}</td>
+                                <td><button type="button" ng-click="reviewCtrl.reviewRedirect(hall)">Leave a Review</button></td>
+                                
+                            </tr>
+                        </tbody>
+                    </table>
+
+            </section>
+        </main>
+
+        <footer class="boxes">
+            <p>For more information about each hall <a href="https://www.otago.ac.nz/accommodation/index.html">click here</a>
+            </p>
+        </footer>
+
+    </body>
+
+</html>

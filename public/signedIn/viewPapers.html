@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="OtagoReviewApp">
+    <head>
+        <title>Otago Student Review: View Papers</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
+        <script src="../js/angular.js"></script>
+        <script src="../js/angular-resource.js"></script>
+        <script src="../js/ngStorage.js"></script>
+        <script src="../js/otagoReviewApp.js"></script>
+    </head>
+
+
+    <header ng-controller="StudentController as studCtrl">
+        <nav>
+            <ul>
+                <li><a href="signedInIndex.html">Home</a></li>
+                <li><a>Papers</a></li>
+                <li><a href="viewTutors.html">Tutors</a></li>
+                <li><a href="viewHalls.html ">Halls</a></li>
+                <li><a href="viewLibraries.html">Libraries</a></li>
+                <li><a href="" ng-click="studCtrl.signOut()">Sign Out</a></li>
+            </ul>
+        </nav>
+        <div id="welcome">{{studCtrl.welcome}}</div>
+    </header>
+    
+    <body  ng-controller="PaperController as paperCtrl">
+        <h1>Papers</h1>
+        <main ng-controller="ReviewController as reviewCtrl">
+
+            <section id="wrapper">
+
+                <div id="side-box">
+                    <h2>Select a Subject Area:</h2>
+                    <ul> 
+                        <button class ="departments" type="submit" ng-click="paperCtrl.selectAll()">All</button>
+                        <button class = "departments" type="submit" ng-repeat="dept in paperCtrl.departments" ng-click="paperCtrl.selectDepartment(dept)">{{dept}}</button>
+                    </ul>
+                </div>
+                <div id="main-box">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="paper-code">Paper Code</th>
+                                <th class="paper-name">Name</th>
+                                <th class="paper-description">Description</th>
+                                <th class="reviews">Reviews</th>
+                                <th class="add-review">Add a Review</th>
+                            </tr>
+                        </thead>
+                        <tbody >
+                            <!--ng-repeat is kinda like a foreach loop. For each product in prodCtrl.products-->
+                            <tr ng-repeat="paper in paperCtrl.papers">
+                                <td>{{paper.code}}</td>
+                                <td>{{paper.title}}</td>
+                                <td>{{paper.description}}</td>
+                                <td>{{paper.reviews}}</td>
+                                
+                                <td><button type="button" ng-click="reviewCtrl.reviewRedirect(paper)">Leave a Review</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </section>
+        </main>
+
+        <footer class="boxes">
+            <p>For more information about each paper and their departments <a href="https://www.otago.ac.nz/courses/subjects/">click here</a>
+            </p>
+        </footer>
+
+    </body>
+
+</html>
